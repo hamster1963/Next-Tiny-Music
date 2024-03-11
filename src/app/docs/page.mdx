@@ -1,0 +1,45 @@
+import {Authors, Button} from "../../components/mdx";
+export const metadata = {
+    title: 'Introduction',
+}
+
+# Introduction
+<div className={"flex items-center gap-1 h-2"}><Authors names="Hamster"/><p className="text-sm text-muted-foreground pt-0.5">2024-03-11</p></div>
+
+<picture className={"grid grid-cols-2 gap-4"}>
+    <img src={"https://img.buycoffee.tech/tiny-music.gif"}    alt="tiny-music-demo"></img>
+    <img src={"https://img.buycoffee.tech/tiny-music-3.webp"} className={"w-48"}   alt="tiny-music-demo"></img>
+</picture>
+
+This is a small widget specifically designed for displaying the music playback progress.\
+Initially created for [my personal blog](https://buycoffee.top).\
+It uses simple colors and animations to display several pieces of information:
+- Song title
+- Album cover
+- Playback status
+- Playback progress
+
+
+<div className="not-prose mb-6 mt-6 flex gap-3">
+    <Button href="/docs/installation" arrow="right">
+        <>Install now</>
+    </Button>
+</div>
+
+## The backstory(中文)
+For more **detailed** information, you can check out my blog post:
+<Button href="https://www.buycoffee.top/blog/what-am-i-doing" target="_blank" variant="secondary">
+    <>我正在做什么，听什么?</>
+</Button>
+
+## Thanks
+The _**design**_ and _**animations**_ of the widget draw inspiration from various sources: \
+[Apple Music](https://music.apple.com/us/browse),
+[Dyanmic Island](https://support.apple.com/guide/iphone/view-live-activities-in-the-dynamic-island-iph28f50d10d/ios),
+[HomeDash](https://home.buycoffe.top).
+
+
+## Acknowledgments
+- [Framer Motion](https://www.framer.com/motion/)
+- [React](https://reactjs.org/)
+- [Next.js](https://nextjs.org/)
