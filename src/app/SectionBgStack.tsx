@@ -49,38 +49,38 @@ const genParam = (index: number) => {
 
 const bgList = [
   {
-    image: "/assets/hero/4.png",
+    image: "/assets/hero/4.avif",
     ...genParam(3)
   },
   {
-    image: "/assets/hero/3.png",
+    image: "/assets/hero/3.avif",
     ...genParam(2)
   },
   {
-    image: "/assets/hero/2.png",
+    image: "/assets/hero/2.avif",
     ...genParam(1)
   },
   {
-    image: "/assets/hero/1.png",
+    image: "/assets/hero/1.avif",
     ...genParam(0)
   },
 ]
 
 const bgListDark = [
   {
-    image: "/assets/hero/4-dark.png",
+    image: "/assets/hero/4-dark.avif",
     ...genParam(3)
   },
   {
-    image: "/assets/hero/3-dark.png",
+    image: "/assets/hero/3-dark.avif",
     ...genParam(2)
   },
   {
-    image: "/assets/hero/2-dark.png",
+    image: "/assets/hero/2-dark.avif",
     ...genParam(1)
   },
   {
-    image: "/assets/hero/1-dark.png",
+    image: "/assets/hero/1-dark.avif",
     ...genParam(0)
   },
 ]

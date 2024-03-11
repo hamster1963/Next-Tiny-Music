@@ -65,8 +65,8 @@ function MobileNavigation(
         )}
       >
         <Link href="/" className="p-2 -m-2" onClick={() => setMenuOpen(false)}>
-          <picture><img src={"/icon.png"} className="dark:hidden block h-8 " alt="tiny-music"></img><img
-              src={"/icon-dark.png"} className=" hidden dark:block h-8 " alt="tiny-music"/></picture>
+          <picture><img src={"/icon.avif"} className="dark:hidden block h-8 " alt="tiny-music"></img><img
+              src={"/icon-dark.avif"} className=" hidden dark:block h-8 " alt="tiny-music"/></picture>
         </Link>
         <div className="flex items-center">
           <div className="mr-4">
@@ -158,8 +158,8 @@ function DesktopNavigation(props: React.ComponentPropsWithoutRef<'nav'>) {
       )}
     >
       <Link href="/" className="p-2 -m-2 -mb-4">
-        <picture><img src={"/icon.png"} className="dark:hidden block h-8 " alt="tiny-music"></img><img
-            src={"/icon-dark.png"} className=" hidden dark:block h-8 " alt="tiny-music"/></picture>
+        <picture><img src={"/icon.avif"} className="dark:hidden block h-8 " alt="tiny-music"></img><img
+            src={"/icon-dark.avif"} className=" hidden dark:block h-8 " alt="tiny-music"/></picture>
       </Link>
       <div className="flex items-center">
         <TinyMusic trackTitle={"Easy"} artworkUrl={"https://img.buycoffee.tech/slow-down-small.jpeg"} playerStatus={true} playPercent={55} />
