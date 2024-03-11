@@ -35,5 +35,5 @@ export const transitionLg = {
 export const transitionXl = {
   type: 'spring',
   duration: 2,
-  bounce: 0.25,
+  bounce: 0,
 }

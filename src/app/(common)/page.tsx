@@ -8,7 +8,7 @@ import {Button} from "@/components/ui/button";
 export default function Home() {
   return (
     <main className="flex  flex-col">
-      <div className="relative w-full">
+      <div className="relative w-full ">
         <HeaderPadding />
         <div className="flex flex-col items-center px-12 pt-16 gap-6">
           <picture><img src={"/icon.avif"} className="dark:hidden block h-20 md:h-24 " alt="tiny-music"></img><img
