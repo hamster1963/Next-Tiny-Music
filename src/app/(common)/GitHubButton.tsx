@@ -51,9 +51,9 @@ export function GitHubButton() {
               transition={transitionLg}
             >
               <div
-                className="flex items-center pl-2 opacity-50"
+                className="flex items-center pb-0.5 pl-2 opacity-50"
               >
-                <StarIcon className="w-4 h-4 _mr-0.5"/>{starCount}
+                <StarIcon className="w-4 h-4 _mr-0.5"/><div className={"pt-0.5"}>{starCount}</div>
               </div>
             </motion.div>
           )}
