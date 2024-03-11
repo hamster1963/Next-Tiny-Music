@@ -11,8 +11,8 @@ export default function Home() {
       <div className="relative w-full">
         <HeaderPadding />
         <div className="flex flex-col items-center px-12 pt-16 gap-6">
-          <picture><img src={"/icon.png"} className="dark:hidden block h-20 md:h-24 " alt="tiny-music"></img><img
-              src={"/icon-dark.png"} className=" hidden dark:block h-20 md:h-24 " alt="tiny-music"/></picture>
+          <picture><img src={"/icon.avif"} className="dark:hidden block h-20 md:h-24 " alt="tiny-music"></img><img
+              src={"/icon-dark.avif"} className=" hidden dark:block h-20 md:h-24 " alt="tiny-music"/></picture>
           <h1 className="hidden">UVCanvas</h1>
           <p className="text-lg text-foreground/70 leading-7 max-w-[500px] w-full text-center break-words">
             A fresh, minimalist, and visually appealing music status display component, featuring a ready-to-use copy-paste mode, brought to you by{" "}
