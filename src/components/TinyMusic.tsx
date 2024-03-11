@@ -1,7 +1,7 @@
 "use client";
 import clsx from 'clsx'
 import { AnimatePresence, motion } from 'framer-motion'
-import React, {useCallback, useEffect, useState} from 'react'
+import React, {useCallback, useEffect, useMemo, useState} from 'react'
 import {cn} from "@/lib/utils";
 
 
@@ -35,11 +35,6 @@ interface MusicData {
     playPercent: number
 }
 
-interface RGBColor {
-    r: number
-    g: number
-    b: number
-}
 
 const anim = {
     initial: { opacity: 1, scale: 0.3, transition: { delay: 1 } },
@@ -56,9 +51,9 @@ const anim = {
 
 function TinyMusic({className,trackTitle,artworkUrl,playerStatus,playPercent}:MusicData){
     const [isActive, setIsActive] = useState(false)
-    const [imgColor, setImgColor] = useState<RGBColor>()
+    const [imgColor, setImgColor] = useState({ r: 0, g: 0, b: 0 })
     const [isMounted, setIsMounted] = useState(false)
-    const extractAverageColor = useCallback((img: HTMLImageElement): RGBColor => {
+    const extractAverageColor = useCallback((img: HTMLImageElement) => {
         const canvas = document.createElement('canvas')
         const context = canvas.getContext('2d')
         if (!context) {
@@ -91,27 +86,30 @@ function TinyMusic({className,trackTitle,artworkUrl,playerStatus,playPercent}:Mu
 
 
     useEffect(() => {
+        let isCancelled = false;
+
         const fetchImage = async () => {
-            if (artworkUrl) {
-                const res = await fetch(artworkUrl)
-                const blob = await res.blob()
-                const img = new Image()
-                img.src = URL.createObjectURL(blob)
-                img.onload = function () {
-                    const color = extractAverageColor(this as HTMLImageElement)
-                    setImgColor(color)
+            const res = await fetch(artworkUrl);
+            const blob = await res.blob();
+            const img = new Image();
+            img.src = URL.createObjectURL(blob);
+            img.onload = () => {
+                if (!isCancelled) {
+                    setImgColor(extractAverageColor(img));
                 }
-            }
-        }
-        void fetchImage()
-    }, [artworkUrl, extractAverageColor])
+            };
+        };
+
+        void fetchImage();
+
+        return () => { isCancelled = true; };
+    }, [artworkUrl, extractAverageColor]);
+
 
     useEffect(() => {
-        setTimeout(() => {
-            setIsMounted(true)
-        }, 1500)
-    }, [])
-
+        const timer = setTimeout(() => setIsMounted(true), 1000);
+        return () => clearTimeout(timer);
+    }, []);
 
 
     return (
@@ -123,20 +121,17 @@ function TinyMusic({className,trackTitle,artworkUrl,playerStatus,playPercent}:Mu
             <AnimatePresence mode={'wait'}>
                 {isMounted && (
                     <motion.div
-                        key={'music-widget'}
+                        key="music-widget"
                         variants={anim}
-                        initial={'initial'}
+                        initial="initial"
                         animate={isActive ? 'open' : 'closed'}
-                        className={clsx(
-                            'pointer-events-auto relative mr-4 flex items-center rounded-xl bg-white backdrop-blur-lg dark:bg-black',
-                            {
-                                'gap-1 bg-opacity-10 px-1.5 py-1.5 ring-1 ring-zinc-900/5 dark:bg-opacity-10 dark:ring-white/10':
-                                    !isActive,
-                                'bg-opacity-0 px-2 py-2 dark:bg-opacity-0': isActive,
-                            }
-                        )}
+                        className={clsx('pointer-events-auto relative  mr-4 flex items-center rounded-xl backdrop-blur-lg', {
+                            'bg-white dark:bg-black': !isActive,
+                            'bg-opacity-10 dark:bg-opacity-10': !isActive,
+                            'px-1.5 py-1.5 gap-1 ring-1 ring-zinc-900/5 dark:ring-white/10': !isActive,
+                            'bg-opacity-0 dark:bg-opacity-0 px-2 py-2': isActive,
+                        })}
                     >
-                        <picture>
                             <img
                                 className={clsx(' relative z-50', {
                                     'w-8 rounded': !isActive,
@@ -150,7 +145,6 @@ function TinyMusic({className,trackTitle,artworkUrl,playerStatus,playPercent}:Mu
                                         : `0 10px 50px 5px rgb(${imgColor?.r}, ${imgColor?.g}, ${imgColor?.b},0.3)`,
                                 }}
                             />
-                        </picture>
                         {/* background */}
                         <div
                             style={{
