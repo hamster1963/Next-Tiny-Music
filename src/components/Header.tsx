@@ -69,7 +69,7 @@ function MobileNavigation(
               src={"/icon-dark.avif"} className=" hidden dark:block h-8 " alt="tiny-music"/></picture>
         </Link>
         <div className="flex items-center">
-          <TinyMusic trackTitle={"Easy"} artworkUrl={"https://img.buycoffee.tech/hamster-img/2024/03/f6ea72c5d915889b64a3829ec90f8ff1.avif"} playerStatus={true} playPercent={55} />
+          <TinyMusic trackTitle={"Easy"} artworkUrl={"/assets/slow-down-small.avif"} playerStatus={true} playPercent={55} />
           <Button variant="ghost" size="icon" onClick={() => setMenuOpen(!menuOpen)}>
             {!menuOpen ? (
               <Bars3Icon className="h-6 w-6 stroke-foreground"/>
