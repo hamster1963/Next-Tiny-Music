@@ -69,9 +69,7 @@ function MobileNavigation(
               src={"/icon-dark.avif"} className=" hidden dark:block h-8 " alt="tiny-music"/></picture>
         </Link>
         <div className="flex items-center">
-          <div className="mr-4">
-            <ThemeToggle/>
-          </div>
+          <TinyMusic trackTitle={"Easy"} artworkUrl={"https://img.buycoffee.tech/hamster-img/2024/03/f6ea72c5d915889b64a3829ec90f8ff1.avif"} playerStatus={true} playPercent={55} />
           <Button variant="ghost" size="icon" onClick={() => setMenuOpen(!menuOpen)}>
             {!menuOpen ? (
               <Bars3Icon className="h-6 w-6 stroke-foreground"/>
@@ -162,7 +160,7 @@ function DesktopNavigation(props: React.ComponentPropsWithoutRef<'nav'>) {
             src={"/icon-dark.avif"} className=" hidden dark:block h-8 " alt="tiny-music"/></picture>
       </Link>
       <div className="flex items-center">
-        <TinyMusic trackTitle={"Easy"} artworkUrl={"https://img.buycoffee.tech/slow-down-small.jpeg"} playerStatus={true} playPercent={55} />
+        <TinyMusic trackTitle={"Easy"} artworkUrl={"https://img.buycoffee.tech/hamster-img/2024/03/f6ea72c5d915889b64a3829ec90f8ff1.avif"} playerStatus={true} playPercent={55} />
         <nav>
           <ul className="flex text-sm _font-medium text-zinc-800 dark:text-zinc-200 items-center">
             {headerLinks.map((item, index) => (

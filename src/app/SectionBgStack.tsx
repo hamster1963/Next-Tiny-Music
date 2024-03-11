@@ -43,7 +43,6 @@ const genParam = (index: number) => {
   return {
     y: -offsetY + k * (offsetY - 120),
     scale: 0.4 * k * (1 - index * 0.05),
-    blur: index * 10
   }
 }
 
@@ -98,11 +97,14 @@ export default function SectionBgStack() {
     return () => clearInterval(interval);
   }, []);
 
-
-  const genParamAdjusted = (index: number, activeIndex: number) => {
-    // 根据activeIndex调整参数，实现图片切换时的动画效果
+  const genNewIndex = (index: number, activeIndex: number) => {
     let newIndex = index - activeIndex;
     if (newIndex < 0) newIndex += bgList.length;
+    return newIndex;
+  }
+
+  const genParamAdjusted = (index: number, activeIndex: number) => {
+    const newIndex = genNewIndex(index, activeIndex);
     return genParam(newIndex);
   };
 
@@ -113,7 +115,10 @@ export default function SectionBgStack() {
     return bgList.length - distance;
   };
 
-
+  const calculateBlur = (index: number, activeIndex: number) => {
+    const newIndex = genNewIndex(index, activeIndex);
+    return Math.abs(Math.max(0, newIndex) * 10);
+  }
 
   return (
     <div className="relative h-72 w-full overflow-hidden px-6 pb-5 lg:px-12 flex flex-col items-center ">
@@ -127,8 +132,8 @@ export default function SectionBgStack() {
                   )}
                   animate={{
                     ...genParamAdjusted(index, activeIndex),
-                    zIndex: calculateZIndex(index), // 使用动态z-index
-                    filter: `blur(${genParamAdjusted(index, activeIndex).blur}px)`,
+                    zIndex: calculateZIndex(index),
+                    filter: `blur(${calculateBlur(index,activeIndex)}px)`,
                   }}
                   transition={transitionXl}
               >
@@ -150,8 +155,8 @@ export default function SectionBgStack() {
                   )}
                   animate={{
                     ...genParamAdjusted(index, activeIndex),
-                    zIndex: calculateZIndex(index), // 使用动态z-index
-                    filter: `blur(${genParamAdjusted(index, activeIndex).blur}px)`,
+                    zIndex: calculateZIndex(index),
+                    filter: `blur(${calculateBlur(index,activeIndex)}px)`,
                   }}
                   transition={transitionXl}
               >
