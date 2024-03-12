@@ -6,7 +6,7 @@ import withSearch from "./src/mdx/search.mjs";
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
+  // output: 'export',
   pageExtensions: ["js", "jsx", "mdx", "ts", "tsx"],
   webpack: (config) => {
     config.module.rules.push({
