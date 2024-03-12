@@ -7,6 +7,8 @@ import "./globals.css";
 import {Providers} from "@/app/providers";
 import {Layout} from "@/components/Layout";
 import Script from "next/script";
+import { SpeedInsights } from "@vercel/speed-insights/next"
+import { Analytics } from "@vercel/analytics/react"
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -59,6 +61,8 @@ export default function RootLayout({
           src="https://umami.buycoffee.top/script.js"
           data-website-id="3cc27476-8d0e-4374-9db4-0d5e126fe55e"
       />
+      <SpeedInsights/>
+      <Analytics/>
       <Layout>{children}</Layout>
     </Providers>
     </body>
