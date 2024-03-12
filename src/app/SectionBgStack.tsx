@@ -122,7 +122,7 @@ export default function SectionBgStack() {
 
   return (
     <div className="relative h-72 w-full overflow-hidden px-6 pb-5 lg:px-12 flex flex-col items-center ">
-      <div className="relative  h-full w-full max-w-2xl">
+      <div className="relative  h-full w-[640px]">
         <div className="absolute bottom-0  dark:hidden translate-y-full w-full">
           {bgList.map((item, index) => (
               <motion.div
